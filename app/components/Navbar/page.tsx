@@ -1,148 +1,62 @@
-"use client"
+import { Button } from "@/components/ui/button"
 
-import React, { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import Image from "next/image"
-
-
-import {
-    Sheet,
-    SheetContent,
-    SheetTrigger,
-} from '@/components/ui/sheet'
-import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { ChevronDown, MenuIcon } from 'lucide-react'
-
-interface NavbarProps {
-    logoSrc: string;
-}
-
-interface NavItem {
-    name: string;
-    href?: string;
-    subItems?: { name: string; href: string }[];
-}
-
-export default function Navbar() {
-    const [isOpen, setIsOpen] = useState(false)
-
-    const navItems: NavItem[] = [
-        {
-            name: 'Security',
-            subItems: [
-                { name: 'Overview', href: '#security-overview' },
-                { name: 'Features', href: '#security-features' },
-            ]
-        },
-        {
-            name: 'Careers',
-            subItems: [
-                { name: 'Open Positions', href: '#open-positions' },
-                { name: 'Culture', href: '#culture' },
-            ]
-        },
-        { name: 'Customers', href: '#customers' },
-        { name: 'Blog', href: '#blog' },
-    ]
-
-    const NavItemComponent = ({ item }: { item: NavItem }) => {
-        if (item.subItems) {
-            return (
-                <DropdownMenu>
-                    <DropdownMenuTrigger className="flex items-center text-sm font-medium text-foreground hover:text-foreground/80">
-                        {item.name} <ChevronDown className="ml-1 h-4 w-4" />
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent>
-                        {item.subItems.map((subItem) => (
-                            <DropdownMenuItem key={subItem.name}>
-                                <a href={subItem.href} className="w-full">
-                                    {subItem.name}
-                                </a>
-                            </DropdownMenuItem>
-                        ))}
-                    </DropdownMenuContent>
-                </DropdownMenu>
-            )
-        }
-        return (
-            <a
-                href={item.href}
-                className="text-sm font-medium text-foreground hover:text-foreground/80"
-            >
-                {item.name}
-            </a>
-        )
-    }
-
-    return (
-        <nav className="flex items-center justify-between p-4 bg-background">
-            <div className="flex items-center">
-                <Image
-                     src="/Logo/FleetLogo.jpg"
-                     width="500"
-                     height="500"
-                     alt="Logo"
-                     className="h-8 w-auto"
-                />
-            </div>
-
-            <div className="hidden md:flex items-center space-x-6">
-                {navItems.map((item) => (
-                    <NavItemComponent key={item.name} item={item} />
-                ))}
-                <Button variant="default" className="bg-foreground text-background hover:bg-foreground/90">
-                    LOGIN
-                </Button>
-            </div>
-
-            <Sheet open={isOpen} onOpenChange={setIsOpen}>
-                <SheetTrigger asChild className="md:hidden">
-                    <Button variant="ghost" size="icon">
-                        <MenuIcon className="h-6 w-6" />
-                        <span className="sr-only">Toggle menu</span>
-                    </Button>
-                </SheetTrigger>
-                <SheetContent side="right" className="w-[240px] sm:w-[300px]">
-                    <nav className="flex flex-col space-y-4 mt-4">
-                        {navItems.map((item) => (
-                            <div key={item.name}>
-                                {item.subItems ? (
-                                    <DropdownMenu>
-                                        <DropdownMenuTrigger className="flex items-center text-sm font-medium text-foreground hover:text-foreground/80">
-                                            {item.name} <ChevronDown className="ml-1 h-4 w-4" />
-                                        </DropdownMenuTrigger>
-                                        <DropdownMenuContent>
-                                            {item.subItems.map((subItem) => (
-                                                <DropdownMenuItem key={subItem.name}>
-                                                    <a href={subItem.href} className="w-full" onClick={() => setIsOpen(false)}>
-                                                        {subItem.name}
-                                                    </a>
-                                                </DropdownMenuItem>
-                                            ))}
-                                        </DropdownMenuContent>
-                                    </DropdownMenu>
-                                ) : (
-                                    <a
-                                        href={item.href}
-                                        className="text-sm font-medium text-foreground hover:text-foreground/80"
-                                        onClick={() => setIsOpen(false)}
-                                    >
-                                        {item.name}
-                                    </a>
-                                )}
-                            </div>
-                        ))}
-                        <Button variant="default" className="bg-foreground text-background hover:bg-foreground/90 w-full">
-                            LOGIN
-                        </Button>
-                    </nav>
-                </SheetContent>
-            </Sheet>
-        </nav>
-    )
+export default function Component() {
+  return (
+    <nav className="flex items-center justify-between p-4 bg-white border-b">
+      <div className="flex items-center">
+        <svg
+          className=" h-8 w-8 text-black"
+          fill="none"
+          height="24"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          viewBox="0 0 24 24"
+          width="24"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M6 19V5" />
+          <path d="M10 19V6.2" />
+          <path d="M14 19v-7.4" />
+          <path d="M18 5v4.6" />
+        </svg>
+        <span className="ml-2 text-xl font-semibold">Fleet</span>
+      </div>
+      <div className="hidden md:flex items-center space-x-6">
+        <a href="#" className="text-primary-400 hover:text-gray-900">
+          Nosotros
+        </a>
+        <a href="#" className="text-primary-400 hover:text-gray-900">
+          Documentación
+        </a>
+        <a href="#" className="text-primary-400 hover:text-gray-900">
+          Precios
+        </a>
+        <Button variant="outline" className="bg-primary-700 text-white hover:bg-gray-800">
+          Iniciar sesión
+        </Button>
+      </div>
+      <div className="md:hidden">
+        <Button variant="ghost" size="icon">
+          <svg
+            className=" h-6 w-6"
+            fill="none"
+            height="24"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
+            viewBox="0 0 24 24"
+            width="24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line x1="4" x2="20" y1="12" y2="12" />
+            <line x1="4" x2="20" y1="6" y2="6" />
+            <line x1="4" x2="20" y1="18" y2="18" />
+          </svg>
+        </Button>
+      </div>
+    </nav>
+  )
 }

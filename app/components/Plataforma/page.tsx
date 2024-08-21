@@ -4,7 +4,7 @@ import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 
 const sections = [
-    'ASSET MANAGEMENT',
+    'Bancos',
     'ADVISORY',
     'LEGAL',
     'CREDIT',
@@ -14,7 +14,7 @@ const sections = [
 ]
 
 const sectionData = {
-    'ASSET MANAGEMENT': [
+    'Bancos': [
         { id: 1, document: 'Portfolio Analysis', date: 'Jan 15, 2024', type: 'Financial', risks: 'Market volatility impact on asset allocation', considerations: 'Emerging market opportunities', highlights: 'Outperformed benchmark by 3.5%' },
         { id: 2, document: 'Fund Performance Report', date: 'Feb 1, 2024', type: 'Performance', risks: 'Underperformance in tech sector', considerations: 'Shift towards value stocks', highlights: 'Consistent alpha generation in fixed income' },
     ],

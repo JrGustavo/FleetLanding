@@ -9,25 +9,25 @@ import Image from "next/image";
 const carouselItems = [
     {
         image: '/Services/Fintech.jpg',
-        title: 'Top law firm enhances accuracy and client value delivery',
+        title: 'Aumenta los ingresos',
         stat: '95%',
         description: 'FASTER CONTRACT ANALYSIS'
     },
     {
         image: '/Services/Fintech.jpg',
-        title: 'Leading alternatives investor augments diligence',
+        title: 'Disminuye el Churn Rate',
         stat: '5x',
         description: 'MORE DATA DILIGENCED'
     },
     {
         image: '/Services/Fintech.jpg',
-        title: 'Fortune 100 company adds thousands of hours of FTE capacity',
+        title: 'Aumenta las conversiones',
         stat: '5-10+',
         description: 'HOURS SAVED PER USER PER WEEK'
     },
     {
         image: '/Services/Fintech.jpg',
-        title: 'Global manufacturer transforms procurement process',
+        title: 'Disminuye el fraude',
         stat: '137%',
         description: 'INCREASE IN PRODUCTIVITY'
     }
@@ -61,14 +61,11 @@ export default function Services() {
     return (
         <div className="bg-background text-foreground py-16 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
-                <h2 className="text-4xl sm:text-5xl font-bold text-center mb-4">
-                    Stop experimenting with AI.
-                    <br />
-                    Start working with it.
+                <h2 className="text-2xl sm:text-3xl font-bold text-center mb-4">
+                Construye con Fleet AI nuestro 
+                <br />
+                modelo LLM + Tus datos
                 </h2>
-                <p className="text-xl text-center text-muted-foreground mb-12">
-                    Create value on day one.
-                </p>
 
                 <Slider {...settings} className="mb-8">
                     {carouselItems.map((item, index) => (
