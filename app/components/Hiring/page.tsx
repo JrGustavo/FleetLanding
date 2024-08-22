@@ -1,27 +1,69 @@
+'use client'
+
+import React, { useEffect, useRef } from 'react'
+import useEmblaCarousel from 'embla-carousel-react'
+import { Button } from '@/components/ui/button'
+import Image from 'next/image'
+
 export default function Hiring() {
-    const stats = [
-      { value: "$14T", description: "AUM of firms using Hebbia" },
-      { value: "1000+", description: "use cases in production" },
-      { value: "4 years", description: "deploying enterprise LLMs" },
-      { value: "5000+", description: "1:1 AI onboardings" },
-    ]
-  
-    return (
-      <div className="bg-white p-8 w-full max-w-4xl mx-auto">
-        <h1 className="text-3xl md:text-4xl font-bold text-center mb-2">Pioneering Enterprise AI.</h1>
-        <p className="text-xl text-center text-gray-600 mb-8">Don't settle for second best.</p>
-        
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {stats.map((stat, index) => (
-            <div 
-              key={index}
-              className="bg-blue-700 text-white p-6 rounded-lg shadow-lg transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-blue-800 cursor-pointer"
-            >
-              <div className="text-3xl md:text-4xl font-bold mb-2">{stat.value}</div>
-              <div className="text-sm md:text-base">{stat.description}</div>
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, dragFree: true })
+  const containerRef = useRef<HTMLDivElement | null>(null)
+
+  useEffect(() => {
+    const handleWheel = (e: WheelEvent) => {
+      if (emblaApi) {
+        const scrollDelta = e.deltaY > 0 ? 1 : -1
+        const newIndex = emblaApi.selectedScrollSnap() + scrollDelta
+        emblaApi.scrollTo(newIndex)
+      }
+    }
+
+    const container = containerRef.current
+    if (container) {
+      container.addEventListener('wheel', handleWheel)
+    }
+
+    return () => {
+      if (container) {
+        container.removeEventListener('wheel', handleWheel)
+      }
+    }
+  }, [emblaApi])
+
+  const images = [
+    '/Services/Fintech.jpg',
+    '/Services/Fintech2.jpg',
+    '/Services/Fintech3.jpg',
+    '/Services/Fintech4.jpg',
+  ]
+
+  return (
+    <div className="relative h-screen overflow-hidden" ref={containerRef}>
+      <div className="absolute inset-0 z-10 flex flex-col justify-center items-center text-black text-center p-4">
+        <h1 className="text-4xl md:text-6xl font-bold mb-4">Open Positions</h1>
+        <p className="text-xl md:text-2xl mb-8">Join our team in rethinking legal work.</p>
+        <Button
+  variant="outline"
+  className="bg-white text-black border-white hover:bg-primary-700 hover:text-white"
+>
+  Ver oportunidades
+</Button>
+      </div>
+      <div className="embla overflow-hidden h-full" ref={emblaRef}>
+        <div className="embla__container flex">
+          {images.map((src, index) => (
+            <div key={index} className="embla__slide flex-[0_0_100%] h-full">
+              <Image
+                src="/Services/Fintech.jpg"
+                alt={`Slide ${index + 1}`}
+                width={800} // Adjust width as needed
+                height={600} // Adjust height as needed
+                className="w-full h-full object-cover"
+              />
             </div>
           ))}
         </div>
       </div>
-    )
-  }
+    </div>
+  )
+}

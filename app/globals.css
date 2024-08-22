@@ -99,3 +99,17 @@
     --chart-5: 340 75% 55%;
   }
 }
+
+.embla {
+  position: relative;
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+}
+
+.embla__slide {
+  position: relative;
+  min-width: 100%;
+}
