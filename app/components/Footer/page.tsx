@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button } from '@/components/ui/button'
-import { Grid3x3Icon } from 'lucide-react'
 
 export default function Footer() {
     return (
@@ -50,9 +49,7 @@ export default function Footer() {
                 </div>
             </div>
 
-            <div className="absolute top-4 left-4">
-                <Grid3x3Icon className="h-6 w-6 text-white" />
-            </div>
+
         </footer>
     )
 }
