@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Upload } from 'lucide-react'
+import Image from "image/next"
 
 export default function Seguridad() {
   const [isUploading, setIsUploading] = useState(false)
@@ -35,7 +36,12 @@ export default function Seguridad() {
         <Button variant="outline">Leer Más</Button>
         <div className="flex gap-4 mt-8">
           {certifications.map((cert, index) => (
-            <img key={index} src={cert.image} alt={cert.name} className="w-12 h-12 object-contain" />
+            <Image 
+            height="100"
+            key={index} 
+            src={cert.image} 
+            alt={cert.name} 
+            className="w-12 h-12 object-contain" />
           ))}
         </div>
       </div>
