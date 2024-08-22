@@ -31,10 +31,9 @@ export default function Hiring() {
   }, [emblaApi])
 
   const images = [
-    '/Services/Fintech.jpg',
-    '/Services/Fintech2.jpg',
-    '/Services/Fintech3.jpg',
-    '/Services/Fintech4.jpg',
+    '/Hiring/sala.jpg',
+    '/Hiring/sala2.jpg',
+    '/Hiring/sala3.jpg',
   ]
 
   return (
@@ -43,22 +42,24 @@ export default function Hiring() {
         <h1 className="text-4xl md:text-6xl font-bold mb-4">Open Positions</h1>
         <p className="text-xl md:text-2xl mb-8">Join our team in rethinking legal work.</p>
         <Button
-  variant="outline"
-  className="bg-white text-black border-white hover:bg-primary-700 hover:text-white"
->
-  Ver oportunidades
-</Button>
+          variant="outline"
+          className="bg-white text-black border-white hover:bg-primary-700 hover:text-white"
+        >
+          Ver oportunidades
+        </Button>
       </div>
       <div className="embla overflow-hidden h-full" ref={emblaRef}>
         <div className="embla__container flex">
           {images.map((src, index) => (
-            <div key={index} className="embla__slide flex-[0_0_100%] h-full">
+            <div key={index} className="embla__slide flex-[0_0_70%] h-full">
               <Image
-                src="/Services/Fintech.jpg"
+                src={src}
                 alt={`Slide ${index + 1}`}
-                width={800} // Adjust width as needed
-                height={600} // Adjust height as needed
+                width={600} // Ajuste el ancho para una mejor visualización
+                height={400} // Ajuste la altura para una mejor visualización
                 className="w-full h-full object-cover"
+                quality={100} // Asegura alta calidad de imagen
+                priority // Carga la imagen como alta prioridad
               />
             </div>
           ))}
