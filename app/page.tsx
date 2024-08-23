@@ -28,8 +28,6 @@ export default function Home(){
 <Beneficios/> 
 <Seguridad/> 
 <Hiring/> 
-
-
     </div>
 
   

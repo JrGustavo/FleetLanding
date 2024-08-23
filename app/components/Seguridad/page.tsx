@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Upload } from 'lucide-react'
-import Image from "image/next"
+import Image from "next/image";
 
 export default function Seguridad() {
   const [isUploading, setIsUploading] = useState(false)
@@ -38,6 +38,7 @@ export default function Seguridad() {
           {certifications.map((cert, index) => (
             <Image 
             height="100"
+            weight="100"
             key={index} 
             src={cert.image} 
             alt={cert.name} 
